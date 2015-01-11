@@ -1,0 +1,53 @@
+/*****************
+ *-=header.less=-*
+ *****************
+
+ Auteur : Florian Dupeyron (My?terious)
+ Description : Pour faire une jolie entête.
+*/
+
+/*-=Configuration=-*/
+@size-header-height:	100px;
+@size-header-padding:	10px;
+@size-header-wspace:	10px; /*espace entre l'image et le titre.*/
+
+@font-header-family:	'Oswald', sans-serif;
+@font-header-size:	32pt;
+@font-header-color:	white;
+
+@color-header-back:	#303030;
+/*-=Fin de la section=-*/
+
+header
+{
+	border: 1px solid black;
+	height: @size-header-height;
+
+	width: 100%;
+
+	padding: @size-header-padding;
+
+	background-color: @color-header-back;
+	color: @font-header-color;
+}
+
+/*-=Propriétés police=-*/
+header h1
+{
+	display: inline-block;
+
+	font-family:	@font-header-family;
+	font-size:	@font-header-size;
+
+}
+/*-=Fin de la section=-*/
+
+header img
+{
+	display: inline-block;
+
+	height: 100%;
+	width: auto; //La largeur de l'image s'ajuste pour garder les proportions.
+
+	margin-right: @size-header-wspace;
+}

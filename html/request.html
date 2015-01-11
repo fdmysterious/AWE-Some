@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>AWE-Some - Requête</title>
+
+		<!-- Feuilles de style -->
+		<link rel="stylesheet/less" type="text/css" href="data/css/main.less" />
+		<!-- Fin de la section -->
+
+		<!-- Javascript less -->
+		<script type="text/javascript" src="data/lib/less.min.js"></script>
+		<!-- Fin de la section -->
+	</head>
+
+	<body>
+		<header>
+			<img src="data/img/logo.svg" alt="Logo AWE-Some"/>
+			<h1>Requête</h1>
+		</header>
+
+		<section class="content">
+			<p>
+				Cette page permet de faire une requête sur le serveur du rapsberry est d'obtenir de sa part une réponse.<br/>
+				A utiliser lors du développement ou de tests.
+			</p>
+
+			<div id="form">
+				<fieldset>
+					<legend>Requêtes prédéfinies</legend>
+					<button>Envoyer HELLO</button>
+				</fieldset>
+				<fieldset>
+					<legend>Requête avancée</legend>
+					<select id="fName">
+						<option>HELLO</option>
+						<option>ANS</option>
+						<option>MDUTY</option>
+					</select>
+					<input type="text" id="fArg"/>
+					<button>Envoyer !</button><br/>
+
+					<textarea id="rContent" rows="8" cols="40" readonly>Réponse du serveur.</textarea>
+					<div id="rStatus">Code HTTP retourné : <span id="rStatus-field"></span></div>
+				</fieldset>
+			</div>
+		</section>
+
+		<footer>
+			2014-2015 Florian DUPEYRON, Joris CAUDARD, Antoine GRIMAUD, Titouan GRIGNOUX
+		</footer>
+	</body>
+</html>
