@@ -14,8 +14,14 @@ bus::SerialCommunication s;
 
 void interrupt()
 {
-	out::mot_duty.update(1);
-	out::mot.setDuty(out::mot_duty.value());
+	//out::mot_duty.update(1);
+	if(out::mot_ctrl.available())
+	{
+		out::mot_ctrl.init(10000);
+	}
+	
+	out::MotorMovementControl::pwm_t p = out::mot_ctrl.tick();
+	out::mot.setDuty(p);
 }
 
 void setup()

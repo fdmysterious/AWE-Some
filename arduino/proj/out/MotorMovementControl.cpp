@@ -12,7 +12,7 @@
 
 namespace out
 {
-	MotorMovementControl(speed_t vel, speed_t vlow, speed_t vmax) :
+	MotorMovementControl::MotorMovementControl(speed_t vel, speed_t vlow, speed_t vmax) :
 		m_vel(vel),
 		m_vlow(vlow),
 		m_vmax(vmax)
@@ -33,11 +33,11 @@ namespace out
 		
 		//-=Calcul des valeurs de traitement=-//
 		m_step_low  = (step_t)(MOTORMOVEMENTCONTROL_STEP_LOW_PERCENT * (float)(sTotal));
-		m_step_acdc = (step_t)(.5f * (1.f - MOTORMOVEMENTCONTROL_STEP_LOW_PERCENT) * (float)(sTotal));
+		m_step_acdc = (step_t)(((float)(sTotal) - m_step_low) / 2);
 		//-=Fin de la section=-//
 	}
 
-	pwm_t MotorMovementControl::tick()
+	MotorMovementControl::pwm_t MotorMovementControl::tick()
 	{
 		//-=Variables traitement=-//
 		pwm_t r = 0; //Résultat retourné par la fonction.
@@ -70,7 +70,7 @@ namespace out
 
 			else
 			{
-				m_speed -= m_speed <= m_vlow ? m_vel : 0;
+				m_speed -= m_speed >= m_vlow ? m_vel : 0;
 				if(m_speed < m_vlow) m_speed = m_vlow; //Pour être sûr d'avoir la bonne valeur.
 			}
 			break;
@@ -85,7 +85,7 @@ namespace out
 			case 4:
 			m_speed = 0; //On arrête tout
 			m_phase = 0; //Phase départ.
-			break
+			break;
 
 			default:break;
 		}

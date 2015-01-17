@@ -1,5 +1,5 @@
 set(ARDUINO_DEFAULT_BOARD uno)
-set(ARDUINO_DEFAULT_PORT com4)
+set(ARDUINO_DEFAULT_PORT com5)
 
 set(
 	proj_SRCS
@@ -13,6 +13,7 @@ set(
 	time/TransitionalValue.cpp
 	
 	out/MotorControl.cpp
+	out/MotorMovementControl.cpp
 
 	bus/string_constants.cpp
 	bus/Parser.cpp

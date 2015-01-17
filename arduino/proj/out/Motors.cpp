@@ -3,7 +3,7 @@
  ****************
  
  Auteur : Florian Dupeyron
- Description : Permet d'avoir accès aux moteurs.
+ Description : Permet d'avoir accï¿½s aux moteurs.
 */
 
 //-=Inclusion des headers=-//
@@ -14,4 +14,5 @@ namespace out
 {
 	MotorControl mot(10, 9);
 	time::TransitionalValue mot_duty(0.f, 0.f, 0.5f);
+	out::MotorMovementControl mot_ctrl(0.5f, 200.f, 1023.f);
 }

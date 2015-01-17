@@ -14,7 +14,7 @@
 //-=Fin de la section=-//
 
 //-=Configuration=-//
-#define MOTORMOVEMENTCONTROL_STEP_LOW_PERCENT 10.f //Pourcentage du mouvement total pendant lequel le moteur va lentement.
+#define MOTORMOVEMENTCONTROL_STEP_LOW_PERCENT 0.3f //Pourcentage du mouvement total pendant lequel le moteur va lentement.
 //-=Fin de la section=-//
 
 
