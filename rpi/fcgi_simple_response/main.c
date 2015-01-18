@@ -48,18 +48,16 @@ int main(int argc, const char *argv[])
 	//-=Fin de la section=-//
 	
 	////-=Initialisation client=-//
-	client = net_client_open("/var/run/caveavin/socket/srv");
+	//client = net_client_open("/var/run/caveavin/socket/srv");
 
-	if(client.error)
-	{
-		syslog(LOG_ERR, "Impossible de se connecter au socket : %s.", strerror(errno));
-		return EXIT_FAILURE;
-	}
-	//-=Fin de la section=-//
+	//if(client.error)
+	//{
+	//	syslog(LOG_ERR, "Impossible de se connecter au socket : %s.", strerror(errno));
+	//	return EXIT_FAILURE;
+	//}
+	////-=Fin de la section=-//
 	
 	//-=Prise en charges des requêtes=-//
-	char buffer[1024];
-	char r[1024];
 	while(FCGI_Accept() >= 0)
 	{
 		//syslog(LOG_NOTICE, "Request !");
@@ -101,40 +99,8 @@ int main(int argc, const char *argv[])
 			{
 				printf("-> %s avec la valeur %s\n", a.name, a.value);
 
-				if(strcmp(a.name, "fname") == 0)
-				{
-					strcpy(fname, a.value);
-				}
-
-				else if(strcmp(a.name, "fargs") == 0)
-				{
-					strcpy(fargs, a.value);
-				}
 			} while(fcgi_query_parse(&a, NULL) == QUERY_PARSER_FOUND);
 
-			//-=Formation requête=-//
-			if(strlen(fargs))
-			{
-				sprintf(r, "%s,%s;", fname, fargs);
-			}
-
-			else
-			{
-				sprintf(r, "%s;", fname);
-			}
-			//-=Fin de la section=-//
-			
-			//-=Envoi requête=-//
-			if(send_request(r, buffer, 1024))
-			{
-				printf("Erreur survenue !\n");
-				FCGI_SetExitStatus(500);
-			}
-
-			else
-			{
-				printf("Réponse du serveur :\n%s\n", buffer);
-			}
 			//-=Fin de la section=-//
 		}
 
